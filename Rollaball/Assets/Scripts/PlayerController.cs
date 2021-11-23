@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private string currentText = "";
     private float defaultSpeed = 40.0f;
 
-    private bool isCurrupted = false;
     Vector3 defaultMove;
     List<Collider> collist = new List<Collider>();
 
@@ -134,7 +133,7 @@ public class PlayerController : MonoBehaviour
             if (ans == "Answer1_1" || ans == "Answer1_3")
             {
                 showText("Wrong", 4f);
-                gameTime = 0;
+                startAgain();
             }
             else if (ans == "Answer1_2")
             {
@@ -177,9 +176,13 @@ public class PlayerController : MonoBehaviour
             c.gameObject.SetActive(true);
         }
         collist.Clear();
-        isCurrupted = false;
         count = 0;
         endTextObject.text = "";
+    }
+
+    void startAgain()
+    {
+        gameTime = 0;
     }
 
     void run()
