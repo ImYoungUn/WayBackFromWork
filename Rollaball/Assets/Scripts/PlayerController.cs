@@ -108,19 +108,50 @@ public class PlayerController : MonoBehaviour
             count += 1;
             setScoreText();
         } 
-        else if (other.gameObject.CompareTag("Quiz1"))
+        else if (other.gameObject.CompareTag("Quiz"))
         {
-            showText("Q1.Go to zero. \n1)sin90 2)cos90 3)tan90", 10f);
+            string qz = other.name;
+            if (qz == "Quiz1")
+            {
+                showText("Q1.Go to zero. \n1)sin90 2)cos90 3)tan90", 10f);
+            }
+            else if (qz == "Quiz2")
+            {
+                showText("count 10? \nfor i=0; i¡Â10; i++", 10);
+            }
+            else if (qz == "Quiz3")
+            {
+                showText("i = 8;\n" +
+                    "while i < 11\n" +
+                    "   i += 2\n" +
+                    "i = ?", 10);
+            }
         }
         else if (other.gameObject.CompareTag("Answer"))
         {
             string ans = other.name;
-            showText(other.name, 10f);
             if (ans == "Answer1_1" || ans == "Answer1_3")
             {
                 showText("Wrong", 4f);
             }
             else if (ans == "Answer1_2")
+            {
+                showText("Correct!", 4f);
+            }
+            if (ans == "Answer2_1")
+            {
+                showText("Wrong", 4f);
+            }
+            else if (ans == "Answer2_2")
+            {
+                showText("Correct!", 4f);
+            }
+
+            if (ans == "Answer3_2" || ans == "Answer3_3")
+            {
+                showText("Wrong", 4f);
+            }
+            else if (ans == "Answer3_1")
             {
                 showText("Correct!", 4f);
             }
