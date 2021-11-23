@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private float gameTime = .0f;
     private float textDelay = .0f;
     private string currentText = "";
+    private float defaultSpeed = 40.0f;
 
     private bool isCurrupted = false;
     Vector3 defaultMove;
@@ -133,6 +134,7 @@ public class PlayerController : MonoBehaviour
             if (ans == "Answer1_1" || ans == "Answer1_3")
             {
                 showText("Wrong", 4f);
+                gameTime = 0;
             }
             else if (ans == "Answer1_2")
             {
@@ -141,6 +143,7 @@ public class PlayerController : MonoBehaviour
             if (ans == "Answer2_1")
             {
                 showText("Wrong", 4f);
+                defaultSpeed -= 10;
             }
             else if (ans == "Answer2_2")
             {
@@ -150,6 +153,7 @@ public class PlayerController : MonoBehaviour
             if (ans == "Answer3_2" || ans == "Answer3_3")
             {
                 showText("Wrong", 4f);
+                defaultSpeed -= 10;
             }
             else if (ans == "Answer3_1")
             {
@@ -181,7 +185,7 @@ public class PlayerController : MonoBehaviour
     void run()
     {
         Vector3 leftRight = new Vector3(movementX, 0.0f, 0.0f);
-        defaultMove = new Vector3(0.0f, 0.0f, 40.0f + boost);
+        defaultMove = new Vector3(0.0f, 0.0f, defaultSpeed + boost);
         rb.velocity = (leftRight * speed + defaultMove);
     }
 
